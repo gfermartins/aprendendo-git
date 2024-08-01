@@ -13,13 +13,11 @@ def menu():
                 nome = input('Digite o nome do médico que deseja cadastrar: ')
                 especialidade = input('Digite a especialidade do médico que deseja cadastrar: ')
                 
-                novo_medico = cadastro_medico(crm, nome, especialidade)
-                crm_data.append(novo_medico['crm'])
-                nome_data.append(novo_medico['nome'])
-                especialidade_data.append(novo_medico['especialidade'])
+                cadastro_medico(crm, nome, especialidade)
                 
                 print('Médicos cadastrados:')
-                print(nome_data, crm_data, especialidade_data)
+                for i in range(len(nome_data)):
+                    print(f"Nome: {nome_data[i]}, CRM: {crm_data[i]}, Especialidade: {especialidade_data[i]}")
                 
                 continuar = input('Deseja continuar cadastrando médicos? S/N: ')
                 if continuar.upper() != 'S':
@@ -68,4 +66,3 @@ def menu():
 
 if __name__ == '__main__':
     menu()
-#segundo commit
