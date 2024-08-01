@@ -6,7 +6,7 @@ def consultar_medico(pesquisa):
         if pesquisa.lower() in nome.lower() or pesquisa.lower() in especialidade_data[i].lower():
             encontrado = {
                 'crm': crm_data[i],
-                'nome': nome,
+                'nome': nome_data[i],
                 'especialidade': especialidade_data[i]
             }
             encontrados.append(encontrado)
