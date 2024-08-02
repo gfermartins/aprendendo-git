@@ -1,3 +1,6 @@
-crm_data = []
 nome_data = []
+sobrenome_data = []
+endereco_data = []
+crm_data = []
 especialidade_data = []
+telefone_data = []
