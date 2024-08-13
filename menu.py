@@ -1,5 +1,5 @@
 from cadastro import cadastro_medico, cadastro_paciente
-from consulta import consultar_pessoas
+from consulta import consultar_medicos, consultar_pacientes
 from excluir import excluir_pessoa
 from variaveis import nome_data, sobrenome_data, endereco_data, crm_data, especialidade_data, telefone_data
 
@@ -46,15 +46,26 @@ def menu():
 
         elif opcao == 3:
             while True:
-                pesquisa = input('Digite o nome, sobrenome ou especialidade que deseja pesquisar: ')
-                resultados = consultar_pessoas(pesquisa)
+                tipo_consulta = int(input('1 - Consultar médicos\n2 - Consultar pacientes\n'))
                 
-                if resultados:
-                    for resultado in resultados:
-                        print(f"Nome: {resultado['nome']}, Sobrenome: {resultado['sobrenome']}, Endereço: {resultado['endereco']}, CRM: {resultado['crm']}, Especialidade: {resultado['especialidade']}, Telefone: {resultado['telefone']}")
-                else:
-                    print('Nenhuma pessoa encontrada.')
+                if tipo_consulta == 1:
+                    pesquisa = input('Digite o nome, sobrenome ou especialidade do médico que deseja pesquisar: ')
+                    resultados = consultar_medicos(pesquisa)
+                    if resultados:
+                        for resultado in resultados:
+                            print(f"Nome: {resultado['nome']}, Sobrenome: {resultado['sobrenome']}, Endereço: {resultado['endereco']}, CRM: {resultado['crm']}, Especialidade: {resultado['especialidade']}")
+                    else:
+                        print('Nenhum médico encontrado.')
                 
+                elif tipo_consulta == 2:
+                    pesquisa = input('Digite o nome do paciente que deseja buscar: ')
+                    resultados = consultar_pacientes(pesquisa)
+                    if resultados:
+                        for resultado in resultados:
+                            print(f"Nome: {resultado['nome']}, Sobrenome: {resultado['sobrenome']}, Endereço: {resultado['endereco']}, Telefone: {resultado['telefone']}")
+                    else:
+                        print('Nenhum paciente encontrado.')
+
                 continuar = input('Deseja fazer uma nova consulta? S/N: ')
                 if continuar.upper() != 'S':
                     break
